@@ -19,6 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldTreeCell;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Font;
 import javafx.stage.DirectoryChooser;
 import javafx.util.Callback;
 import org.apache.commons.io.FileUtils;
@@ -210,7 +211,7 @@ public class MainUIController extends BaseFXController {
         loadLeftDBTree();
 		setTooltip();
 		//默认选中第一个，否则如果忘记选择，没有对应错误提示
-        encodingChoice.getSelectionModel().selectFirst();
+    encodingChoice.getSelectionModel().selectFirst();
 	}
 
 	private void setTooltip() {
@@ -221,8 +222,8 @@ public class MainUIController extends BaseFXController {
 		useActualColumnNamesCheckbox.setTooltip(new Tooltip("是否使用数据库实际的列名作为实体类域的名称"));
 		useTableNameAliasCheckbox.setTooltip(new Tooltip("在Mapper XML文件中表名使用别名，并且列全部使用as查询"));
 		overrideXML.setTooltip(new Tooltip("重新生成时把原XML文件覆盖，否则是追加"));
-        useDAOExtendStyle.setTooltip(new Tooltip("将通用接口方法放在公共接口中，DAO接口留空"));
-        forUpdateCheckBox.setTooltip(new Tooltip("在Select语句中增加for update后缀"));
+		useDAOExtendStyle.setTooltip(new Tooltip("将通用接口方法放在公共接口中，DAO接口留空"));
+    forUpdateCheckBox.setTooltip(new Tooltip("在Select语句中增加for update后缀"));
 	}
 
     void loadLeftDBTree() {
@@ -266,16 +267,16 @@ public class MainUIController extends BaseFXController {
 			AlertUtil.showErrorAlert(result);
 			return;
 		}
-        GeneratorConfig generatorConfig = getGeneratorConfigFromUI();
-        if (!checkDirs(generatorConfig)) {
-            return;
-        }
+    GeneratorConfig generatorConfig = getGeneratorConfigFromUI();
+    if (!checkDirs(generatorConfig)) {
+        return;
+    }
 
-        MybatisGeneratorBridge bridge = new MybatisGeneratorBridge();
-        bridge.setGeneratorConfig(generatorConfig);
-        bridge.setDatabaseConfig(selectedDatabaseConfig);
-        bridge.setIgnoredColumns(ignoredColumns);
-        bridge.setColumnOverrides(columnOverrides);
+    MybatisGeneratorBridge bridge = new MybatisGeneratorBridge();
+    bridge.setGeneratorConfig(generatorConfig);
+    bridge.setDatabaseConfig(selectedDatabaseConfig);
+    bridge.setIgnoredColumns(ignoredColumns);
+    bridge.setColumnOverrides(columnOverrides);
 		UIProgressCallback alert = new UIProgressCallback(Alert.AlertType.INFORMATION);
 		bridge.setProgressCallback(alert);
 		alert.show();

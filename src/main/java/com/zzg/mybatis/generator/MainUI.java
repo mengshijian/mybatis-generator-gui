@@ -48,8 +48,6 @@ public class MainUI extends Application {
 			jFrame.add(jPanel);
 			jFrame.setLocationRelativeTo(null);
 			jFrame.setVisible(true);
-
 		}
 	}
-
 }

@@ -1,6 +1,7 @@
 package com.zzg.mybatis.generator.view;
 
 import javafx.scene.control.Alert;
+import javafx.stage.StageStyle;
 
 /**
  * Created by Owen on 6/21/16.
