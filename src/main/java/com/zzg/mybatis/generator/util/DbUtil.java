@@ -110,10 +110,8 @@ public class DbUtil {
 	 * @param dbType 数据库类型
 	 */
 	private static void loadDbDriver(DbType dbType){
-		List<String> driverJars = ConfigHelper.getAllJDBCDriverJarPaths();
-		ClassLoader classloader = ClassloaderUtility.getCustomClassloader(driverJars);
 		try {
-			Class clazz = Class.forName(dbType.getDriverClass(), true, classloader);
+			Class clazz = Class.forName(dbType.getDriverClass());
 			Driver driver = (Driver) clazz.newInstance();
 			_LOG.info("load driver class: {}", driver);
 			drivers.put(dbType, driver);

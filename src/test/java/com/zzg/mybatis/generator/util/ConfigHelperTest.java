@@ -27,10 +27,4 @@ public class ConfigHelperTest {
         String path = ConfigHelper.findConnectorLibPath("PostgreSQL");
         Assert.assertTrue(path.contains("postgresql"));
     }
-
-    @Test
-	public void testGetAllJDBCDriverJarPaths() {
-    	List<String> jarFilePaths = ConfigHelper.getAllJDBCDriverJarPaths();
-    	Assert.assertTrue(jarFilePaths != null && jarFilePaths.size() > 0);
-    }
 }

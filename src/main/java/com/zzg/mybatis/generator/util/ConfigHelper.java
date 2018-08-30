@@ -224,32 +224,4 @@ public class ConfigHelper {
 			throw new RuntimeException("lib can't find");
 		}
 	}
-
-	public static List<String> getAllJDBCDriverJarPaths() {
-		List<String> jarFilePathList = new ArrayList<>();
-		URL url = Thread.currentThread().getContextClassLoader().getResource("logback.xml");
-		try {
-			File file;
-			if (url.getPath().contains(".jar")) {
-				file = new File("lib/");
-			} else {
-				file = new File("src/main/resources/lib");
-			}
-			System.out.println(file.getCanonicalPath());
-			File[] jarFiles = file.listFiles();
-			System.out.println("jarFiles:" + jarFiles);
-			if (jarFiles != null && jarFiles.length > 0) {
-				for (File jarFile : jarFiles) {
-					if (jarFile.isFile() && jarFile.getAbsolutePath().endsWith(".jar")) {
-						jarFilePathList.add(jarFile.getAbsolutePath());
-					}
-				}
-			}
-		} catch (Exception e) {
-			throw new RuntimeException("找不到驱动文件，请联系开发者");
-		}
-		return jarFilePathList;
-	}
-
-
 }
